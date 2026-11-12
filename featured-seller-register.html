@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Create Featured Seller Account | DavinciMarket</title>
+    <link rel="stylesheet" href="Css/seller.css">
+</head>
+<body>
+<div class="auth-container">
+    <a href="index.html" class="brand"><img class="brand-logo" src="img/logo.jpeg" alt="">Davin<span>ciMarket</span></a>
+    <main class="auth-card">
+        <div class="logo">D</div>
+        <p class="eyebrow">FEATURED SELLER PORTAL</p>
+        <h1>Create new featured seller account</h1>
+        <p class="subtitle">Create your seller account, then submit your featured listing payment for review.</p>
+        <form id="sellerRegisterForm">
+            <label>Full name</label>
+            <input type="text" id="fullName" placeholder="Your full name" required autocomplete="name">
+            <label>Business name</label>
+            <input type="text" id="businessName" placeholder="Your business name" required autocomplete="organization">
+            <label>Email address</label>
+            <input type="email" id="email" placeholder="Business email" required autocomplete="email">
+            <label>Phone number</label>
+            <input type="tel" id="phone" placeholder="e.g. 09037141652" required autocomplete="tel">
+            <label>Business location</label>
+            <input type="text" id="location" placeholder="Lagos, Nigeria" required>
+            <label>Password</label>
+            <input type="password" id="password" placeholder="At least 6 characters" minlength="6" required autocomplete="new-password">
+            <label>Confirm password</label>
+            <input type="password" id="confirmPassword" placeholder="Confirm password" required autocomplete="new-password">
+            <button type="submit" id="registerBtn">Create Featured Seller Account</button>
+            <p id="message" aria-live="polite"></p>
+        </form>
+        <p class="switch">Already registered? <a href="featured-seller-login.html">Featured seller sign in</a></p>
+        <p class="switch">Need a regular seller account? <a href="seller-register.html">Regular seller registration</a></p>
+        <a href="seller-featured.html" class="back">← Back to featured seller page</a>
+    </main>
+</div>
+<script type="module" src="js/seller-auth.js"></script>
+</body>
+</html>

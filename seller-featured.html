@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Get featured | DavinciMarket</title><link rel="stylesheet" href="Css/style.css">
+<style>
+.featured-wrap{max-width:900px;margin:48px auto;padding:0 20px}.featured-card{background:var(--panel,#17172b);border:1px solid var(--line,#30334a);border-radius:20px;padding:clamp(22px,4vw,42px);margin:20px 0}.featured-card h1{margin-top:0}.featured-card label{display:grid;gap:7px;margin:14px 0}.featured-card input{width:100%;padding:13px;border-radius:9px;border:1px solid #555;background:#10101e;color:#fff}.featured-status{padding:14px;border-radius:10px;background:#22243a}.featured-note{opacity:.8;font-size:.92rem}.opay-number{font-size:1.5rem;font-weight:800;letter-spacing:.08em}.button-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
+</style></head><body>
+<header class="site-header"><a class="brand" href="index.html"><img class="brand-logo" src="img/logo.jpeg" alt="">Davinci<span>Market</span></a><nav><a href="index.html">Marketplace</a><a href="seller-login.html">Regular seller login</a><a href="featured-seller-login.html">Featured seller login</a></nav></header>
+<main class="featured-wrap">
+<section class="featured-card"><p class="eyebrow">FEATURED SELLER PROFILE</p><h1>Get your business featured</h1><p>Pay ₦20,000 by OPay transfer for a 30-day listing. Upload your transfer receipt here. Once an admin confirms it, complete your business profile and list up to five products.</p><div class="featured-status"><strong>OPay number:</strong> <span class="opay-number">9037141652</span><br><strong>Amount:</strong> ₦20,000</div><p id="featuredStatus" class="featured-status" aria-live="polite">Checking seller account…</p><div id="featuredLoginLinks" class="button-row" hidden><a class="button primary" href="featured-seller-login.html">Featured seller sign in</a><a class="button secondary" href="featured-seller-register.html">Create new featured seller account</a></div><div id="approvedLinks" class="button-row" hidden><a class="button primary" href="seller.html">Open seller dashboard</a></div></section>
+<form id="transferForm" class="featured-card" hidden>
+<h2>Submit your OPay receipt</h2><p class="featured-note">Sign in or create a seller account before uploading your receipt so we can connect approval to your seller dashboard.</p>
+<label>Sender name<input name="senderName" required maxlength="100" autocomplete="name"></label>
+<label>OPay transaction reference<input name="transactionReference" required minlength="4" maxlength="80" pattern="[A-Za-z0-9-]{4,80}" placeholder="Reference on your receipt"></label>
+<label>Transfer date<input name="transferDate" type="date" required></label>
+<label>Payment receipt image<input name="receipt" type="file" accept="image/jpeg,image/png,image/webp" required></label>
+<p class="featured-note">JPG, PNG or WEBP, maximum 5MB.</p>
+<button id="submitTransferBtn" class="button primary" type="submit">Upload receipt for approval</button><p id="transferMessage" class="form-message" aria-live="polite"></p>
+</form>
+</main><script type="module" src="js/seller-featured.js"></script></body></html>

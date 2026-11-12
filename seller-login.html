@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seller Login | DavinciMarket</title>
+    <link rel="stylesheet" href="Css/seller.css">
+</head>
+<body>
+
+<div class="auth-container">
+    <a href="index.html" class="brand"><img class="brand-logo" src="img/logo.jpeg" alt="">Davin<span>ciMarket</span></a>
+
+    <div class="auth-card">
+        <div class="logo">D</div>
+        <p class="eyebrow">SELLER PORTAL</p>
+        <h1>Welcome back</h1>
+        <p class="subtitle">Sign in to manage your business.</p>
+
+        <form id="sellerLoginForm">
+            <label>Email address</label>
+            <input type="email" id="email" placeholder="Enter your email" required>
+
+            <label>Password</label>
+            <input type="password" id="password" placeholder="Enter password" required>
+
+            <button type="submit" id="loginBtn">Sign In</button>
+            <p id="message"></p>
+        </form>
+
+        <p class="switch">
+            New to DavinciMarket?
+            <a href="seller-register.html">Create seller account</a>
+        </p>
+
+        <p class="switch">
+            Have a featured listing? <a href="featured-seller-login.html">Featured seller login</a>
+        </p>
+
+        <a href="index.html" class="back">← Back to marketplace</a>
+    </div>
+</div>
+
+<script type="module" src="js/seller-auth.js"></script>
+</body>
+</html>

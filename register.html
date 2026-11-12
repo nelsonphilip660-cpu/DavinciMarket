@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Create account | DavinciMarket</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="auth-page"><a class="brand auth-brand" href="index.html"><img class="brand-logo" src="img/logo.jpeg" alt="">
+        Davinci<span>Market</span></a>
+    <main class="auth-card">
+        <p class="eyebrow">JOIN THE MARKETPLACE</p>
+        <h1>Create your account</h1>
+        <form id="registerForm"><label>Full name<input id="name" required maxlength="80"
+                    autocomplete="name"></label><label>Email address<input type="email" id="email" required
+                    autocomplete="email"></label><label>Phone number<input id="phone" type="tel" required
+                    autocomplete="tel" placeholder="080…"></label><label>Password<input id="password" type="password"
+                    required minlength="8" autocomplete="new-password"></label><label>Account type<select id="role">
+                    <option value="customer">I want to shop</option>
+                    <option value="seller">I want to sell</option>
+                </select></label><button class="button primary full" type="submit">Create account</button>
+            <p class="form-message" id="formMessage"></p>
+        </form>
+        <p class="auth-switch">Already registered? <a href="login.html">Login</a></p>
+    </main>
+    <script type="module" src="js/auth.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="270" height="270" viewBox="120 80 270 270" role="img" aria-label="DavinciMarket logo">
+  <g transform="translate(118 83)">
+    <path d="M18 28h93c77 0 125 47 125 111S188 250 111 250H18z" fill="#152A2C"/>
+    <path d="M60 71v164h49c52 0 83-36 83-96s-31-68-83-68z" fill="#F3F7F6"/>
+    <path d="M40 18h144" stroke="#21A89B" stroke-width="12" stroke-linecap="round"/>
+    <circle cx="237" cy="31" r="13" fill="#21A89B"/>
+  </g>
+</svg>

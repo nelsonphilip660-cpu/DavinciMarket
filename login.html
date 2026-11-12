@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Login | DavinciMarket</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="auth-page">
+
+    <a class="brand auth-brand" href="index.html">
+        <img class="brand-logo" src="img/logo.jpeg" alt="">
+        Davinci<span>Market</span>
+    </a>
+
+    <main class="auth-card">
+
+        <p class="eyebrow">WELCOME BACK</p>
+        <h1>Login to your account</h1>
+
+        <form id="loginForm">
+
+            <label>
+                Email address
+                <input type="email" id="email" required autocomplete="email">
+            </label>
+
+            <label>
+                Password
+                <input type="password" id="password" required autocomplete="current-password">
+            </label>
+
+            <div style="text-align:right; margin: -8px 0 18px;">
+                <button type="button" id="forgotPasswordBtn"
+                    style="background:none;border:none;color:#8b65ed;font-weight:600;cursor:pointer;padding:5px 0;">
+                    Forgot Password?
+                </button>
+            </div>
+
+            <button class="button primary full" type="submit">
+                Login
+            </button>
+
+            <p class="form-message" id="formMessage"></p>
+
+            <p class="form-message" id="resetMessage"></p>
+
+        </form>
+
+        <p class="auth-switch">
+            New to DavinciMarket?
+            <a href="register.html">Create an account</a>
+        </p>
+
+    </main>
+
+    <script type="module" src="js/auth.js"></script>
+
+</body>
+
+</html>

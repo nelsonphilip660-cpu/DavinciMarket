@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#111111">
+    <title>Your Cart | DavinciMarket</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <header class="site-header">
+        <a class="brand" href="index.html">
+            <img class="brand-logo" src="img/logo.jpeg" alt="">
+            Davinci<span>Market</span>
+        </a>
+
+        <nav>
+            <a href="index.html">Continue shopping</a>
+            <a href="seller.html">Sell</a>
+            <button class="text-button" id="logoutBtn">Logout</button>
+        </nav>
+    </header>
+
+    <main class="dashboard">
+
+        <p class="eyebrow">YOUR SHOPPING BAG</p>
+        <h1>Review your cart</h1>
+
+        <div class="cart-layout">
+
+            <section class="panel">
+                <div id="cartItems">Your cart is empty.</div>
+            </section>
+
+            <aside class="panel">
+
+                <h2>Order summary</h2>
+
+                <div class="summary-line">
+                    <span>Items subtotal</span>
+                    <strong id="subtotal">₦0</strong>
+                </div>
+
+                <p class="small muted">
+                    Delivery is arranged and charged separately by each seller.
+                </p>
+
+                <label>
+                    Delivery address
+                    <textarea
+                        id="deliveryAddress"
+                        rows="3"
+                        placeholder="Enter your full delivery address">
+                    </textarea>
+                </label>
+
+                <label>
+                    Contact phone
+                    <input
+                        id="deliveryPhone"
+                        type="tel"
+                        placeholder="080...">
+                </label>
+
+                <div class="summary-line total">
+                    <span>Total to pay</span>
+                    <strong id="total">₦0</strong>
+                </div>
+
+                <button
+                    class="button primary full"
+                    id="checkoutBtn">
+                    Proceed to OPay Bank Transfer
+                </button>
+
+                <p class="form-message" id="checkoutMessage"></p>
+
+                <div class="notice">
+                    <strong>Payment method: OPay Bank Transfer</strong>
+                    <p class="small">
+                        Your order will be saved as pending.
+                        After checkout, WhatsApp will open so you can
+                        send your payment receipt for manual verification.
+                    </p>
+                </div>
+
+            </aside>
+
+        </div>
+
+    </main>
+
+    <script type="module" src="js/cart.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Seller Dashboard | DavinciMarket</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        .seller-dashboard {
+            max-width: 1000px;
+            margin: 50px auto;
+            padding: 25px;
+        }
+
+        .seller-card {
+            background: var(--dark-card, #17172b);
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+        }
+
+        .seller-card input,
+        .seller-card textarea,
+        .seller-card select {
+            display: block;
+            width: 100%;
+            padding: 13px;
+            margin: 12px 0;
+            border-radius: 8px;
+            border: 1px solid #444;
+            background: #10101e;
+            color: white;
+        }
+
+        .seller-card button {
+            padding: 13px 22px;
+            border: none;
+            border-radius: 8px;
+            background: #7545e8;
+            color: white;
+            cursor: pointer;
+        }
+
+        .seller-product {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px;
+            background: var(--dark-card, #17172b);
+            border-radius: 12px;
+            margin: 12px 0;
+            flex-wrap: wrap;
+        }
+
+        .seller-product-details {
+            flex: 1;
+        }
+
+        #sellerMessage {
+            margin: 15px 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="site-header">
+        <a class="brand" href="index.html">
+            <img class="brand-logo" src="img/logo.jpeg" alt="">
+            DavinciMarket
+        </a>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="shop.html">Marketplace</a>
+            <a href="login.html">Login</a>
+        </nav>
+    </header>
+
+    <main class="seller-dashboard">
+
+        <h1>Seller Dashboard</h1>
+
+        <p>Manage your products and grow your business.</p>
+
+        <section class="seller-card">
+
+            <h2>Add New Product</h2>
+
+            <form id="productForm">
+
+                <label>Product Name</label>
+                <input type="text" id="productName" placeholder="Enter product name" required>
+
+                <label>Description</label>
+                <textarea id="description" placeholder="Describe your product" required></textarea>
+
+                <label>Product Price (₦)</label>
+                <input type="number" id="price" min="100" required>
+
+                <label>Stock Quantity</label>
+                <input type="number" id="stock" min="1" required>
+
+                <label>Category</label>
+                <select id="category" required>
+                    <option value="">Select category</option>
+                    <option value="Electronics">Electronics</option>
+                    <option value="Fashion">Fashion</option>
+                    <option value="Phones">Phones</option>
+                    <option value="Home">Home & Living</option>
+                    <option value="Beauty">Beauty</option>
+                    <option value="Food">Food</option>
+                    <option value="Other">Other</option>
+                </select>
+
+                <label>Product Image</label>
+
+                <input type="file" id="imageFile" accept="image/jpeg,image/png,image/webp" required>
+
+                <p id="sellerMessage"></p>
+
+                <button type="submit">
+                    Publish Product
+                </button>
+
+            </form>
+
+        </section>
+
+        <section>
+
+            <h2>My Products</h2>
+
+            <div id="sellerProducts">
+                Loading your products...
+            </div>
+
+        </section>
+
+    </main>
+
+    <script type="module" src="js/seller.js"></script>
+
+</body>
+
+</html>

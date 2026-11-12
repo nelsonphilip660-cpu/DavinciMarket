@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout | DavinciMarket</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/checkout.css">
+</head>
+
+<body>
+
+<header class="checkout-header">
+    <a href="index.html" class="checkout-brand"><img class="brand-logo" src="img/logo.jpeg" alt=""> DavinciMarket</a>
+    <a href="index.html" class="back-link">Continue shopping</a>
+</header>
+
+<main class="checkout-container">
+
+    <section class="checkout-form-section">
+
+        <p class="eyebrow">BANK TRANSFER CHECKOUT</p>
+        <h1>Complete your order</h1>
+
+        <p class="muted">
+            Enter your delivery information and pay through OPay.
+        </p>
+
+        <form id="checkoutForm">
+
+            <h2>Delivery information</h2>
+
+            <label for="customerName">Full name</label>
+            <input id="customerName" type="text" required placeholder="Your full name">
+
+            <label for="customerPhone">Phone number</label>
+            <input id="customerPhone" type="tel" required placeholder="08012345678">
+
+            <label for="customerEmail">Email address</label>
+            <input id="customerEmail" type="email" required placeholder="you@example.com">
+
+            <label for="deliveryAddress">Delivery address</label>
+            <textarea id="deliveryAddress" required rows="3" placeholder="Your full delivery address"></textarea>
+
+            <label for="deliveryNote">Delivery note (optional)</label>
+            <textarea id="deliveryNote" rows="2" placeholder="Landmark or delivery instructions"></textarea>
+
+            <h2>Payment by bank transfer</h2>
+
+            <div class="transfer-card">
+
+                <h3>DavinciMarket OPay Account</h3>
+
+                <p>Bank: <strong>OPay</strong></p>
+                <p>Account name: <strong>Nelson Philip</strong></p>
+
+                <p>
+                    Account number:
+                    <strong id="accountNumber">9037141652</strong>
+                </p>
+
+                <button type="button" id="copyAccount">
+                    Copy account number
+                </button>
+
+                <p>
+                    After placing your order, transfer the exact amount
+                    and submit your receipt through WhatsApp.
+                </p>
+
+            </div>
+
+            <p id="checkoutMessage" class="checkout-message"></p>
+
+            <button type="submit" id="placeOrderButton" class="place-order">
+                Place order & continue to WhatsApp
+            </button>
+
+        </form>
+
+    </section>
+
+    <aside class="order-summary">
+
+        <h2>Your order</h2>
+
+        <div id="checkoutItems">
+            Loading your items...
+        </div>
+
+        <hr>
+
+        <div class="summary-line">
+            <span>Total amount</span>
+            <strong id="checkoutTotal">₦0</strong>
+        </div>
+
+        <p class="small muted">
+            Payment will remain pending until an administrator verifies
+            your transfer receipt.
+        </p>
+
+    </aside>
+
+</main>
+
+<script type="module" src="js/checkout.js"></script>
+
+</body>
+</html>

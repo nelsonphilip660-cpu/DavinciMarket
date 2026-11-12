@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop | DavinciMarket</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/shop.css">
+</head>
+
+<body>
+
+    <header class="shop-header">
+        <a href="index.html" class="shop-logo">
+            <img class="brand-logo" src="img/logo.jpeg" alt=""> DavinciMarket
+        </a>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="shop.html" class="active">Shop</a>
+            <a href="seller-dashboard.html">Sell Products</a>
+        </nav>
+
+        <button class="cart-button" id="cartButton">
+            Cart <span id="cartCount">0</span>
+        </button>
+    </header>
+
+    <main>
+        <section class="shop-hero">
+            <p class="eyebrow">WELCOME TO DAVINCIMARKET</p>
+            <h1>Discover products you'll love.</h1>
+            <p>Shop amazing products from sellers on DavinciMarket.</p>
+
+            <div class="shop-search">
+                <input type="search" id="searchInput" placeholder="Search for products...">
+                <button id="searchButton">Search</button>
+            </div>
+        </section>
+
+        <section class="shop-content">
+            <div class="shop-heading">
+                <div>
+                    <p class="eyebrow">OUR MARKETPLACE</p>
+                    <h2>Explore Products</h2>
+                </div>
+
+                <select id="categoryFilter">
+                    <option value="all">All Categories</option>
+                </select>
+            </div>
+
+            <p id="productMessage" class="product-message">
+                Loading products...
+            </p>
+
+            <div class="product-grid" id="productGrid"></div>
+        </section>
+    </main>
+
+    <aside class="cart-panel" id="cartPanel">
+        <div class="cart-heading">
+            <h2>Your Cart</h2>
+            <button id="closeCart" aria-label="Close cart">&times;</button>
+        </div>
+
+        <div id="cartItems" class="cart-items"></div>
+
+        <div class="cart-footer">
+            <h3>Total: <span id="cartTotal">₦0</span></h3>
+            <button id="clearCart" class="clear-cart">Clear Cart</button>
+            <a href="checkout.html" class="checkout-link">
+    Proceed to Checkout
+</a>
+            <p class="cart-note">
+                
+                Checkout and payment will be connected in the next step.
+            </p>
+        </div>
+    </aside>
+
+    <div class="cart-overlay" id="cartOverlay"></div>
+
+    <footer class="shop-footer">
+        <p>&copy; <span id="currentYear"></span> DavinciMarket. All rights reserved.</p>
+    </footer>
+
+    <script type="module" src="js/shop.js"></script>
+</body>
+
+</html>

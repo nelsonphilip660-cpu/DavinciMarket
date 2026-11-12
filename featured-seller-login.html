@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Featured Seller Login | DavinciMarket</title>
+    <link rel="stylesheet" href="Css/seller.css">
+</head>
+<body>
+<div class="auth-container">
+    <a href="index.html" class="brand"><img class="brand-logo" src="img/logo.jpeg" alt="">Davin<span>ciMarket</span></a>
+    <main class="auth-card">
+        <div class="logo">D</div>
+        <p class="eyebrow">FEATURED SELLER PORTAL</p>
+        <h1>Featured seller sign in</h1>
+        <p class="subtitle">Sign in to continue your featured listing application or check its status.</p>
+        <form id="sellerLoginForm">
+            <label>Email address</label>
+            <input type="email" id="email" placeholder="Enter your email" required autocomplete="email">
+            <label>Password</label>
+            <input type="password" id="password" placeholder="Enter password" required autocomplete="current-password">
+            <button type="submit" id="loginBtn">Sign In</button>
+            <p id="message" aria-live="polite"></p>
+        </form>
+        <p class="switch">New to the featured seller portal? <a href="featured-seller-register.html">Create a new featured seller account</a></p>
+        <p class="switch">Looking for regular seller access? <a href="seller-login.html">Regular seller login</a></p>
+        <a href="seller-featured.html" class="back">← Back to featured seller page</a>
+    </main>
+</div>
+<script type="module" src="js/seller-auth.js"></script>
+</body>
+</html>

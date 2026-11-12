@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="#090b16">
+    <title>Seller profile | DavinciMarket</title>
+    <link rel="stylesheet" href="Css/style.css">
+    <style>
+        .seller-profile-page {
+            max-width: 1120px;
+            margin: 34px auto 85px;
+            padding: 0 5%
+        }
+
+        .seller-back {
+            display: inline-flex;
+            margin-bottom: 20px;
+            color: #b9a5ff;
+            font-weight: 700
+        }
+
+        .seller-profile-hero {
+            display: grid;
+            grid-template-columns: minmax(240px, .8fr) 1.2fr;
+            gap: 34px;
+            align-items: center;
+            padding: 26px;
+            border: 1px solid var(--line);
+            border-radius: 22px;
+            background: var(--panel)
+        }
+
+        .seller-profile-portrait {
+            width: 100%;
+            aspect-ratio: 4/4.5;
+            object-fit: cover;
+            border-radius: 16px;
+            background: #171d34
+        }
+
+        .seller-verified {
+            display: inline-flex;
+            padding: 7px 11px;
+            border: 1px solid #55d6a277;
+            border-radius: 999px;
+            color: #8ff0c5;
+            font-size: .78rem;
+            font-weight: 800;
+            letter-spacing: .04em
+        }
+
+        .seller-profile-copy h1 {
+            margin: 12px 0 3px;
+            font: 800 clamp(2rem, 5vw, 3.5rem) Manrope, sans-serif;
+            letter-spacing: -1.5px
+        }
+
+        .seller-profile-copy h2 {
+            margin: 0 0 18px;
+            color: var(--gold);
+            font-size: 1.2rem
+        }
+
+        .seller-profile-copy p {
+            color: var(--muted);
+            line-height: 1.8
+        }
+
+        .seller-location-line {
+            display: flex;
+            gap: 9px;
+            align-items: flex-start;
+            margin-top: 20px;
+            color: #e8eaf4;
+            font-weight: 700
+        }
+
+        .seller-profile-handle {
+            display: inline-flex;
+            margin-top: 16px;
+            padding: 10px 15px;
+            border-radius: 999px;
+            background: #ffffff12;
+            color: #ded0ff;
+            font-weight: 800
+        }
+
+        .seller-profile-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 22px;
+            margin-top: 24px
+        }
+
+        .seller-profile-panel {
+            padding: 24px;
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            background: var(--panel)
+        }
+
+        .seller-profile-panel h2 {
+            margin: 0 0 16px;
+            font: 800 1.35rem Manrope, sans-serif
+        }
+
+        .seller-map {
+            width: 100%;
+            min-height: 315px;
+            border: 0;
+            border-radius: 12px;
+            background: #171d34
+        }
+
+        .seller-map-note,
+        .seller-placeholder {
+            margin: 10px 0 0;
+            color: var(--muted);
+            font-size: .9rem
+        }
+
+        .seller-store-gallery {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 12px
+        }
+
+        .seller-store-gallery img {
+            width: 100%;
+            aspect-ratio: 1.25;
+            object-fit: cover;
+            border-radius: 12px;
+            background: #171d34
+        }
+
+        .seller-product-image-wrap {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px
+        }
+
+
+        @media(max-width:760px) {
+
+            .seller-profile-hero,
+            .seller-profile-grid {
+                grid-template-columns: 1fr
+            }
+
+            .seller-profile-portrait {
+                max-height: 440px;
+                aspect-ratio: 1.1
+            }
+
+            .seller-map {
+                min-height: 260px
+            }
+        }
+        .seller-profile-socials { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+        .seller-profile-social-icon { display: inline-flex; align-items: center; gap: 8px; padding: 10px 13px; border: 1px solid var(--line); border-radius: 999px; color: var(--text); font-size: .8rem; font-weight: 800; transition: transform .2s ease, border-color .2s ease, background .2s ease; }
+        .seller-profile-social-icon svg { width: 20px; height: 20px; animation: sellerSocialFloat 2.8s ease-in-out infinite; }
+        .seller-profile-social-icon:nth-child(2) svg { animation-delay: .25s; }
+        .seller-profile-social-icon:nth-child(3) svg { animation-delay: .5s; }
+        .seller-profile-social-icon:hover { transform: translateY(-3px); border-color: var(--purple); background: #8055ed22; }
+        .seller-profile-social-icon:hover svg { animation: sellerSocialPop .45s ease; }
+        @keyframes sellerSocialFloat { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-3px); } }
+        @keyframes sellerSocialPop { 0% { transform: scale(1); } 60% { transform: scale(1.3) rotate(-8deg); } 100% { transform: scale(1); } }
+        @media(prefers-reduced-motion:reduce) { .seller-profile-social-icon svg { animation: none; } .seller-profile-social-icon { transition: none; } }    </style>
+</head>
+
+<body>
+    <header class="site-header"><a class="brand" href="index.html"><img class="brand-logo" src="img/logo.jpeg" alt="">
+            Davinci<span>Market</span></a>
+        <nav><a href="index.html#top-sellers">Top sellers</a><a href="shop.html">Shop</a><a href="cart.html">Cart</a>
+        </nav>
+    </header>
+    <main class="seller-profile-page"><a class="seller-back" href="index.html#top-sellers">← Back to top sellers</a>
+        <div id="sellerProfileContent">
+            <p class="seller-placeholder">Loading seller profile…</p>
+        </div>
+    </main>
+    <script type="module" src="js/seller-profile.js"></script>
+</body>
+
+</html>

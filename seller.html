@@ -1,0 +1,232 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="#111111">
+    <title>Seller Dashboard | DavinciMarket</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .featured-profile-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; }
+        .featured-profile-grid label { display:grid; gap:7px; margin:8px 0; }
+        .featured-profile-wide { grid-column:1/-1; }
+        .featured-profile-grid input, .featured-profile-grid textarea { width:100%; padding:12px; border-radius:8px; border:1px solid #555; background:#10101e; color:white; }
+        @media(max-width:650px){.featured-profile-grid{grid-template-columns:1fr}.featured-profile-wide{grid-column:auto}}
+        .image-upload-box {
+            border: 2px dashed #7545e8;
+            border-radius: 14px;
+            padding: 22px;
+            text-align: center;
+            background: rgba(117, 69, 232, .06);
+            margin-top: 8px;
+        }
+
+        .image-upload-box input {
+            width: 100%;
+            margin-top: 12px;
+        }
+
+        #imagePreview {
+            display: none;
+            width: 100%;
+            max-width: 260px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin: 15px auto 0;
+        }
+
+        .image-hint {
+            font-size: 13px;
+            opacity: .7;
+            margin-top: 8px;
+        }
+        #productImagePreviews { display:flex; gap:8px; flex-wrap:wrap; margin-top:14px; }
+        #productImagePreviews img { width:76px; height:76px; object-fit:cover; border-radius:8px; }
+    </style>
+
+</head>
+
+<body>
+    <header class="site-header">
+        <a class="brand" href="index.html">
+            <img class="brand-logo" src="img/logo.jpeg" alt="">
+            Davinci<span>Market</span>
+        </a>
+        <nav>
+            <a href="index.html">Marketplace</a>
+            <a href="cart.html">Cart</a>
+            <a href="seller-featured.html">Featured profile</a>
+            <button class="text-button" id="logoutBtn">Logout</button>
+        </nav>
+
+    </header>
+    <main class="dashboard">
+        <div class="section-heading">
+            <div>
+                <p class="eyebrow">SELLER CENTRE</p>
+                <h1>Your seller dashboard</h1>
+                <p class="muted">Add products and manage your listings.</p>
+            </div>
+        </div>
+
+        <section class="panel" id="featuredProfilePanel" hidden>
+            <p class="eyebrow">PAYMENT APPROVED</p>
+            <h2>Your featured business profile</h2>
+            <p class="muted">Complete your business details and list up to five products.</p>
+            <form id="featuredProfileForm" class="featured-profile-grid">
+                <label>Business name<input id="featuredBusinessName" required maxlength="100"></label>
+                <label>Business address / location<input id="featuredLocation" required maxlength="180" placeholder="Area, Lagos, Nigeria"></label>
+                <label class="featured-profile-wide">About your business<textarea id="featuredBio" rows="3" maxlength="1200" required></textarea></label>
+                <label>Instagram handle<input id="featuredHandle" maxlength="80" placeholder="@yourbusiness"></label>
+                <label>Instagram link<input id="featuredInstagram" type="url" placeholder="https://instagram.com/yourbusiness"></label>
+                <label>TikTok link<input id="featuredTikTok" type="url" placeholder="https://tiktok.com/@yourbusiness"></label>
+                <label>Website / other social link<input id="featuredWebsite" type="url" placeholder="https://yourbusiness.com"></label>
+                <label class="featured-profile-wide">Business profile picture<input id="featuredPicture" type="file" accept="image/jpeg,image/png,image/webp"><small>JPG, PNG or WEBP, maximum 5MB.</small></label>
+                <div class="featured-profile-wide"><img id="featuredPicturePreview" alt="Business profile preview" hidden style="max-width:180px;max-height:180px;object-fit:cover;border-radius:12px"><button class="button primary" type="submit">Save business profile</button><p id="featuredProfileMessage" class="form-message" aria-live="polite"></p></div>
+            </form>
+        </section>
+        <div class="dashboard-grid">
+
+            <section class="panel">
+                <p class="eyebrow">FEATURED LISTING</p>
+                <h2>Add your products</h2>
+                <p class="muted">Add up to five products to your featured listing. Submit one product at a time; each one will appear below after submission.</p>
+                <p id="featuredProductLimit" class="featured-status">Your featured product slots will appear here after payment approval.</p>
+
+                <form id="productForm">
+
+                    <label>
+                        Product name
+                        <input id="productName" type="text" required maxlength="100">
+                    </label>
+
+                    <label>
+                        Description
+                        <textarea id="description" rows="4" required maxlength="1500"></textarea>
+                    </label>
+
+                    <div class="form-row">
+
+                        <label>
+                            Price (₦)
+                            <input id="price" type="number" min="100" step="1" required>
+                        </label>
+
+                        <label>
+                            Category
+                            <select id="category" required>
+                                <option>Fashion</option>
+                                <option>Shoes &amp; Bags</option>
+                                <option>Jewelry &amp; Accessories</option>
+                                <option>Electronics</option>
+                                <option>Phones &amp; Accessories</option>
+                                <option>Beauty &amp; Personal Care</option>
+                                <option>Home Furniture &amp; Appliances</option>
+                                <option>Food &amp; Groceries</option>
+                                <option>Health &amp; Wellness</option>
+                                <option>Baby &amp; Kids</option>
+                                <option>Sports &amp; Fitness</option>
+                                <option>Books &amp; Stationery</option>
+                                <option>Arts, Crafts &amp; Gifts</option>
+                                <option>Other</option>
+                            </select>
+                        </label>
+
+                    </div>
+
+                    <label>
+                        State where this product is available
+                        <select id="sellerState" required>
+                            <option value="">Choose seller state</option>
+                            <option>Abia</option><option>Adamawa</option><option>Akwa Ibom</option><option>Anambra</option><option>Bauchi</option><option>Bayelsa</option><option>Benue</option><option>Borno</option><option>Cross River</option><option>Delta</option><option>Ebonyi</option><option>Edo</option><option>Ekiti</option><option>Enugu</option><option>Federal Capital Territory</option><option>Gombe</option><option>Imo</option><option>Jigawa</option><option>Kaduna</option><option>Kano</option><option>Katsina</option><option>Kebbi</option><option>Kogi</option><option>Kwara</option><option>Lagos</option><option>Nasarawa</option><option>Niger</option><option>Ogun</option><option>Ondo</option><option>Osun</option><option>Oyo</option><option>Plateau</option><option>Rivers</option><option>Sokoto</option><option>Taraba</option><option>Yobe</option><option>Zamfara</option>
+                        </select>
+                    </label>
+
+                    <label>Product image</label>
+
+                    <div class="image-upload-box">
+                        <p><strong>Select product image</strong></p>
+
+                        <p class="image-hint">
+                            Choose an image from your phone or computer.
+                        </p>
+
+                        <label>Photo 1 (main image)<input type="file" id="imageFile" class="product-photo-input" accept="image/jpeg,image/png,image/webp" required></label>
+                        <label>Photo 2<input type="file" id="imageFile2" class="product-photo-input" accept="image/jpeg,image/png,image/webp"></label>
+                        <label>Photo 3<input type="file" id="imageFile3" class="product-photo-input" accept="image/jpeg,image/png,image/webp"></label>
+                        <label>Photo 4<input type="file" id="imageFile4" class="product-photo-input" accept="image/jpeg,image/png,image/webp"></label>
+                        <label>Photo 5<input type="file" id="imageFile5" class="product-photo-input" accept="image/jpeg,image/png,image/webp"></label>
+                        <div id="productImagePreviews" aria-live="polite"></div>
+
+                        <p class="image-hint">
+                            Choose a photo in each slot you want to use. JPG, PNG or WEBP; maximum 5MB per photo.
+                        </p>
+                    </div>
+
+                    <label>
+                        Stock quantity
+                        <input id="stock" type="number" min="1" value="1" required>
+                    </label>
+
+                    <button class="button primary" type="submit">
+                        Add product to my featured listing
+                    </button>
+
+                    <p class="form-message" id="sellerMessage"></p>
+
+                </form>
+            </section>
+
+            <section class="panel">
+                <h2>Your submitted products</h2>
+
+                <div id="sellerProducts" class="seller-products">
+                    Loading your products…
+                </div>
+            </section>
+
+        </div>
+
+        <section class="panel notice">
+            <strong>Delivery arrangement:</strong>
+            Sellers are responsible for contacting buyers, agreeing
+            delivery fees and timelines, packaging, and delivering
+            orders. Keep customers updated and retain proof of delivery.
+        </section>
+
+    </main>
+    <script>
+        const imageFiles = document.querySelectorAll(".product-photo-input");
+        const imagePreviews = document.getElementById("productImagePreviews");
+
+        function updateProductPhotoPreviews() {
+            imagePreviews.replaceChildren();
+            const files = Array.from(imageFiles).map(input => input.files?.[0]).filter(Boolean);
+            const allowedTypes = [
+                "image/jpeg",
+                "image/png",
+                "image/webp"
+            ];
+
+            for (const selectedFile of files) {
+                if (selectedFile.size > 5 * 1024 * 1024 || !allowedTypes.includes(selectedFile.type)) {
+                    alert("Choose JPG, PNG or WEBP photos up to 5MB each.");
+                    imageFiles.forEach(input => input.value = "");
+                    imagePreviews.replaceChildren();
+                    return;
+                }
+                const preview = document.createElement("img");
+                preview.alt = `Product photo preview ${imagePreviews.children.length + 1}`;
+                preview.src = URL.createObjectURL(selectedFile);
+                imagePreviews.appendChild(preview);
+            }
+        }
+        imageFiles.forEach(input => input.addEventListener("change", updateProductPhotoPreviews));
+    </script>
+    <script type="module" src="js/seller.js"></script>
+</body>
+
+</html>

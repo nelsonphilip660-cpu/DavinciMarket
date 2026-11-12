@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>DavinciMarket | Shop Nigerian businesses</title>
+    <link rel="stylesheet" href="Css/style.css">
+</head>
+
+<body>
+    <header class="site-header"><a class="brand" href="index.html"><img class="brand-logo" src="img/logo.jpeg" alt="">
+            Davinci<span>Market</span></a><button class="menu-toggle" id="menuToggle"
+            aria-label="Toggle menu">☰</button>
+        <nav id="mainNav"><a href="index.html">Home</a><a href="seller-login.html">Sell on DavinciMarket</a><a
+                href="cart.html">Cart <b id="cartCount">0</b></a><a href="login.html" id="navLogin">Login</a><a
+                class="nav-cta" href="register.html" id="navRegister">Get started</a><button class="text-button hidden"
+                id="logoutBtn">Logout</button></nav>
+    </header>
+    <main>
+        <section class="hero">
+            <div>
+                <p class="eyebrow">A marketplace built for Nigeria</p>
+                <h1>Discover great products.<br><em>Support local sellers.</em></h1>
+                <p class="hero-copy">Shop products from independent sellers. Pay securely online and let the seller
+                    arrange delivery directly with you.</p>
+                <div class="hero-actions"><a class="button primary" href="#marketplace">Explore products</a><a
+                        class="button secondary" href="seller.html">Start selling</a></div>
+            </div>
+            <div class="hero-art">
+                <div class="art-circle">DM</div>
+                <div class="floating-card">🛍️ <span>Shop local. Shop smart.</span></div>
+            </div>
+        </section>
+        <section class="trust-strip"><span>🔒 Secure online checkout</span><span>🇳🇬 Nigerian sellers</span><span>📦
+                Seller-arranged delivery</span></section>
+        <section class="section" id="marketplace">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">THE MARKETPLACE</p>
+                    <h2>Find your next favourite</h2>
+                </div><span class="muted" id="productStatus">Loading products…</span>
+            </div>
+            <div class="toolbar"><label class="state-filter-label" for="stateFilter">What state are you in?
+                    <select id="stateFilter" aria-label="Filter products by seller state">
+                        <option value="">All states</option>
+                        <option>Abia</option><option>Adamawa</option><option>Akwa Ibom</option><option>Anambra</option><option>Bauchi</option><option>Bayelsa</option><option>Benue</option><option>Borno</option><option>Cross River</option><option>Delta</option><option>Ebonyi</option><option>Edo</option><option>Ekiti</option><option>Enugu</option><option>Federal Capital Territory</option><option>Gombe</option><option>Imo</option><option>Jigawa</option><option>Kaduna</option><option>Kano</option><option>Katsina</option><option>Kebbi</option><option>Kogi</option><option>Kwara</option><option>Lagos</option><option>Nasarawa</option><option>Niger</option><option>Ogun</option><option>Ondo</option><option>Osun</option><option>Oyo</option><option>Plateau</option><option>Rivers</option><option>Sokoto</option><option>Taraba</option><option>Yobe</option><option>Zamfara</option>
+                    </select>
+                </label><input id="searchInput" type="search" placeholder="Search products…"><select
+                    id="categoryFilter">
+                    <option value="">All categories</option>
+                    <option>Fashion</option>
+                    <option>Shoes &amp; Bags</option>
+                    <option>Jewelry &amp; Accessories</option>
+                    <option>Electronics</option>
+                    <option>Phones &amp; Accessories</option>
+                    <option>Beauty &amp; Personal Care</option>
+                    <option>Home Furniture &amp; Appliances</option>
+                    <option>Food &amp; Groceries</option>
+                    <option>Health &amp; Wellness</option>
+                    <option>Baby &amp; Kids</option>
+                    <option>Sports &amp; Fitness</option>
+                    <option>Books &amp; Stationery</option>
+                    <option>Arts, Crafts &amp; Gifts</option>
+                    <option>Other</option>
+                </select></div>
+            <div class="product-grid" id="productGrid"></div>
+        </section>
+        <section class="seller-banner">
+            <div>
+                <p class="eyebrow">GROW YOUR BUSINESS</p>
+                <h2>Have something to sell?</h2>
+                <p>List your products and reach more customers on DavinciMarket.</p>
+            </div><a class="button primary" href="seller.html">Open seller dashboard</a>
+        </section>
+        <section class="about-section" id="top-sellers">
+            <div class="about-heading">
+                <p class="eyebrow">THE PEOPLE BEHIND DAVINCIMARKET</p>
+                <h2>Our top and verified sellers</h2>
+                <p>Want to get to ur audience quicker, pay for special sales profile. And be listed</p>
+                <a class="button secondary" href="seller-featured.html">Get featured — ₦20,000/month</a>
+            </div>
+            <div class="about-slider" id="aboutSlider" role="region" aria-roledescription="carousel"
+                aria-label="Top and verified sellers">
+                <div class="about-slider-viewport">
+                    <div class="about-slider-track" id="aboutSliderTrack">
+                        <a class="about-slide" href="seller-profile.html?id=seller-01"
+                            data-image-placeholder="Add seller photo 01 in images/sellers/seller-01.jpg">
+                            <img src="img/men.jpg"
+                                alt="Seller 01 portrait" onerror="this.parentElement.classList.add('image-missing')">
+                            <span class="about-slide-caption"><small class="profile-demo-label">VERIFIED SELLER</small><strong class="creator-name">Nelson John</strong><span
+                                    class="profile-handle"><span class="profile-handle-at">@seller_handle_01</span><span
+                                        class="profile-handle-arrow" aria-hidden="true">↗</span></span></span>
+                        </a>
+                        <a class="about-slide" href="seller-profile.html?id=seller-02"
+                            data-image-placeholder="Add seller photo 02 in images/sellers/seller-02.jpg">
+                            <img src="img/woman.jpg"
+                                alt="Seller 02 portrait" onerror="this.parentElement.classList.add('image-missing')">
+                            <span class="about-slide-caption"><small class="profile-demo-label">VERIFIED SELLER</small><strong class="creator-name">Blessing</strong><span
+                                    class="profile-handle"><span class="profile-handle-at">@chibae</span><span
+                                        class="profile-handle-arrow" aria-hidden="true">↗</span></span></span>
+                        </a>
+                        <a class="about-slide" href="seller-profile.html?id=seller-03"
+                            data-image-placeholder="Add seller photo 03 in images/sellers/seller-03.jpg">
+                            <img src="img/men1.jpg"
+                                alt="Seller 03 portrait" onerror="this.parentElement.classList.add('image-missing')">
+                            <span class="about-slide-caption"><small class="profile-demo-label">VERIFIED SELLER</small><strong class="creator-name">Ibrahim</strong><span
+                                    class="profile-handle"><span class="profile-handle-at">@seller_handle_03</span><span
+                                        class="profile-handle-arrow" aria-hidden="true">↗</span></span></span>
+                        </a>
+                        <a class="about-slide" href="seller-profile.html?id=seller-04"
+                            data-image-placeholder="Add seller photo 04 in images/sellers/seller-04.jpg">
+                            <img src="img/men2.jpg"
+                                alt="Seller 04 portrait" onerror="this.parentElement.classList.add('image-missing')">
+                            <span class="about-slide-caption"><small class="profile-demo-label">VERIFIED SELLER</small><strong class="creator-name">Chukwudi</strong><span
+                                    class="profile-handle"><span class="profile-handle-at">@seller_handle_04</span><span
+                                        class="profile-handle-arrow" aria-hidden="true">↗</span></span></span>
+                        </a>
+                        <a class="about-slide" href="seller-profile.html?id=seller-05"
+                            data-image-placeholder="Add seller photo 05 in images/sellers/seller-05.jpg">
+                            <img src="img/men4.jpg"
+                                alt="Seller 05 portrait" onerror="this.parentElement.classList.add('image-missing')">
+                            <span class="about-slide-caption"><small class="profile-demo-label">VERIFIED SELLER</small><strong class="creator-name">Chris</strong><span
+                                    class="profile-handle"><span class="profile-handle-at">@seller_handle_05</span><span
+                                        class="profile-handle-arrow" aria-hidden="true">↗</span></span></span>
+                        </a>
+                        <a class="about-slide" href="seller-profile.html?id=seller-06"
+                            data-image-placeholder="Add seller photo 06 in images/sellers/seller-06.jpg">
+                            <img src="img/woman1.jpg"
+                                alt="Seller 06 portrait" onerror="this.parentElement.classList.add('image-missing')">
+                            <span class="about-slide-caption"><small class="profile-demo-label">VERIFIED SELLER</small><strong class="creator-name">Silva</strong><span
+                                    class="profile-handle"><span class="profile-handle-at">@seller_handle_06</span><span
+                                        class="profile-handle-arrow" aria-hidden="true">↗</span></span></span>
+                        </a>
+                    </div>
+                </div>
+                <button class="about-slider-control about-slider-prev" type="button" id="aboutSlidePrev"
+                    aria-label="Previous seller">‹</button>
+                <button class="about-slider-control about-slider-next" type="button" id="aboutSlideNext"
+                    aria-label="Next seller">›</button>
+                <div class="about-slider-footer">
+                    <div class="about-slider-dots" id="aboutSliderDots" aria-label="Choose a seller"></div><span
+                        class="about-slider-count" id="aboutSlideCount" aria-live="polite">01 / 06</span>
+                </div>
+            </div>
+        </section>
+        <section class="about-us-portfolio" id="about-us">
+            <div class="about-us-image-wrap">
+                <img src="img/img1.jpeg" alt="DavinciMarket owner portrait" loading="lazy" onerror="this.parentElement.classList.add('owner-image-missing')">
+                <span class="about-us-image-tag">DAVINCIMARKET FOUNDER</span>
+            </div>
+            <div class="about-us-content">
+                <p class="eyebrow">ABOUT THE OWNER</p>
+                <h2>Meet the person behind DavinciMarket.</h2>
+                <p class="about-us-intro">My name is Nelson Philip, founder of DavinciMarket. I saw the need for a simple space where local sellers could showcase their products and reach more customers, while shoppers could discover quality finds from businesses in their community. That is why I built DavinciMarket.</p>
+                <div class="about-us-values">
+                    <article>
+                        <h3>Our goal</h3>
+                        <p>Our goal is to help local sellers showcase their products, reach more customers, and grow while giving shoppers a simple, trusted place to discover great finds.</p>
+                    </article>
+                    <article>
+                        <h3>Our vision</h3>
+                        <p>Our vision is to make DavinciMarket a trusted online home for local businesses—where sellers can grow beyond their neighborhoods and shoppers can discover quality products with confidence.</p>
+                    </article>
+                </div>
+                <div class="about-us-socials">
+                    <span>Connect with the owner</span>
+                    <div class="about-us-social-links">
+                        <a class="owner-social-link owner-instagram" href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="DavinciMarket owner on Instagram">
+                            <svg class="owner-social-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/></svg>
+                            <span>Instagram</span><span class="owner-social-arrow" aria-hidden="true">↗</span>
+                        </a>
+                        <a class="owner-social-link owner-tiktok" href="https://www.tiktok.com/" target="_blank" rel="noopener noreferrer" aria-label="DavinciMarket owner on TikTok">
+                            <svg class="owner-social-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M19.6 7.2a5.9 5.9 0 0 1-3.7-1.3v8.2a5.7 5.7 0 1 1-5.7-5.7c.4 0 .8 0 1.2.1v3.2a2.6 2.6 0 1 0 1.8 2.4V2.8h3.1a5.9 5.9 0 0 0 3.3 3.5v.9Z"/></svg>
+                            <span>TikTok</span><span class="owner-social-arrow" aria-hidden="true">↗</span>
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="faq-section" id="faq">
+            <div class="faq-heading">
+                <p class="eyebrow">NEED A HAND?</p>
+                <h2>Frequently asked questions</h2>
+                <p>Quick answers about shopping, payments, selling, and delivery on DavinciMarket.</p>
+            </div>
+            <div class="faq-list">
+                <details class="faq-item">
+                    <summary>What is DavinciMarket?</summary>
+                    <p>DavinciMarket is an online marketplace where shoppers can discover products from independent sellers.</p>
+                </details>
+                <details class="faq-item">
+                    <summary>How do I place an order?</summary>
+                    <p>Browse the shop, add items to your cart, then continue to checkout and enter your delivery details.</p>
+                </details>
+                <details class="faq-item">
+                    <summary>How do I pay for an order?</summary>
+                    <p>Checkout provides OPay bank transfer details. After placing your order, WhatsApp opens so you can send your payment receipt. The order remains pending until an administrator confirms the payment.</p>
+                </details>
+                <details class="faq-item">
+                    <summary>How is delivery arranged?</summary>
+                    <p>Each seller arranges delivery directly with the buyer. Delivery fees and timing are agreed separately with the seller.</p>
+                </details>
+                <details class="faq-item">
+                    <summary>How can I sell on DavinciMarket?</summary>
+                    <p>Create a seller account, sign in to the seller centre, and submit your products. Products appear in the shop after administrator approval.</p>
+                </details>
+                <details class="faq-item">
+                    <summary>When will my order be confirmed?</summary>
+                    <p>Your order is confirmed after the administrator verifies your bank transfer. The seller can then contact you to arrange delivery.</p>
+                </details>
+            </div>
+        </section>
+    </main>
+    <footer><a class="brand" href="index.html"><img class="brand-logo" src="img/logo.jpeg" alt=""> Davinci<span>Market</span></a>
+        <p>© <span id="year"></span> DavinciMarket. Shop with confidence.</p>
+        <p><a class="small muted" href="admin.html">Admin</a></p>
+        <p class="small muted">Delivery is arranged by each seller. Confirm delivery details before completing your
+            purchase.</p>
+    </footer>
+    <script type="module" src="js/storefront.js"></script>
+    <script type="module" src="js/common.js"></script>
+    <script type="module" src="js/about-slider.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Admin | DavinciMarket</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <header class="site-header"><a class="brand" href="index.html"><img class="brand-logo" src="img/logo.jpeg" alt="">
+            Davinci<span>Market</span></a>
+        <nav><a href="index.html">Marketplace</a><button class="text-button" id="logoutBtn">Logout</button></nav>
+    </header>
+    <main class="dashboard">
+        <p class="eyebrow">CONTROL CENTRE</p>
+        <h1>Marketplace administration</h1>
+        <section class="panel notice"><strong>Admin access is UID-controlled.</strong> Add your Firebase Authentication
+            UID to the Firestore <code>admins</code> collection as the document ID. Never grant admin access using a
+            public profile field.</section>
+        <div class="stats-grid">
+            <div class="panel"><span class="muted">Paid orders</span>
+                <h2 id="paidOrders">—</h2>
+            </div>
+            <div class="panel"><span class="muted">Gross sales</span>
+                <h2 id="grossSales">—</h2>
+            </div>
+            <div class="panel"><span class="muted">Marketplace commission (5%)</span>
+                <h2 id="commission">—</h2>
+            </div>
+            <div class="panel"><span class="muted">Seller payable (95%)</span>
+                <h2 id="sellerPayable">—</h2>
+            </div>
+        </div>
+        <p class="form-message" id="adminMessage"></p>
+    </main>
+    <script type="module" src="js/admin.js"></script>
+</body>
+
+</html>

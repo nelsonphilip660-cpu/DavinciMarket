@@ -1,0 +1,11 @@
+// Replace placeholder names, businesses, handles, map details, store photos, and links with each seller's real information.
+// Keep verified=false until the marketplace has confirmed that seller.
+const lagos = { location: "Lagos, Nigeria", mapQuery: "Lagos, Nigeria", verified: true, socials: [] };
+export const sellerProfiles = {
+  "seller-01": { ...lagos, name: "Nelson John", business: "Business name 01", handle: "@seller_handle_01", platform: "Instagram", bio: "Add this seller’s real business information.", storeImages: ["img/shoe.jpg", "img/shirt.webp", "img/wrist.avif"] },
+  "seller-02": { ...lagos, name: "Blessing", business: "Business name 02", handle: "@chibae", platform: "Instagram", socialLinks: { tiktok: "https://www.tiktok.com/@chibae017?_r=1&_t=ZS-9BK6ctVBh8p" }, bio: "Add this seller’s real business information.", storeImages: ["img/chibae.jpeg", "img/chibae1.jpeg", "img/chibae2.jpeg", "img/chibae3.jpeg", "img/chibae4.jpeg"] },
+  "seller-03": { ...lagos, name: "Ibrahim", business: "Business name 03", handle: "@seller_handle_03", platform: "Instagram", socialLinks: { tiktok: "https://www.tiktok.com/@chibae017?_r=1&_t=ZS-9BK6ctVBh8p" }, bio: "Add this seller’s real business information.", storeImages: ["img/shoe.jpg", "img/shirt.webp", "img/wrist.avif"] },
+  "seller-04": { ...lagos, name: "Chukwudi", business: "Business name 04", handle: "@seller_handle_04", platform: "Instagram", socialLinks: { tiktok: "https://www.tiktok.com/@chibae017?_r=1&_t=ZS-9BK6ctVBh8p" }, bio: "Add this seller’s real business information.", storeImages: ["img/shoe.jpg", "img/shirt.webp", "img/wrist.avif"] },
+  "seller-05": { ...lagos, name: "Chris", business: "Business name 05", handle: "@seller_handle_05", platform: "Instagram", socialLinks: { tiktok: "https://www.tiktok.com/@chibae017?_r=1&_t=ZS-9BK6ctVBh8p" }, bio: "Add this seller’s real business information.", storeImages: ["img/shoe.jpg", "img/shirt.webp", "img/wrist.avif"] },
+  "seller-06": { ...lagos, name: "Silva", business: "Business name 06", handle: "@seller_handle_06", platform: "Instagram", socialLinks: { tiktok: "https://www.tiktok.com/@chibae017?_r=1&_t=ZS-9BK6ctVBh8p" }, bio: "Add this seller’s real business information.", storeImages: ["img/shoe.jpg", "img/shirt.webp", "img/wrist.avif"] }
+};

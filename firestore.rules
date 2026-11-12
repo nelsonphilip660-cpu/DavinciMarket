@@ -1,0 +1,302 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // =====================================
+    // AUTHENTICATION
+    // =====================================
+
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    // =====================================
+    // ADMIN VERIFICATION
+    // =====================================
+
+    function isAdmin() {
+      return signedIn()
+        && exists(
+          /databases/$(database)/documents/admins/$(request.auth.uid)
+        );
+    }
+
+    // =====================================
+    // SELLER VERIFICATION
+    // =====================================
+
+    function isSeller() {
+      return signedIn()
+        && exists(
+          /databases/$(database)/documents/users/$(request.auth.uid)
+        )
+        && get(
+          /databases/$(database)/documents/users/$(request.auth.uid)
+        ).data.role == "seller";
+    }
+
+    // =====================================
+    function activeFeaturedAccess(uid) {
+      return exists(/databases/$(database)/documents/featuredSellerAccess/$(uid))
+        && get(/databases/$(database)/documents/featuredSellerAccess/$(uid)).data.status == "approved"
+        && get(/databases/$(database)/documents/featuredSellerAccess/$(uid)).data.expiresAt > request.time;
+    }
+    // ADMIN ACCOUNTS
+    // =====================================
+
+    match /admins/{adminId} {
+
+      allow get: if signedIn()
+        && request.auth.uid == adminId;
+
+      allow list, create, update, delete: if false;
+    }
+
+    // =====================================
+    // USER AND SELLER PROFILES
+    // =====================================
+
+    match /users/{userId} {
+
+      allow get: if signedIn()
+        && (
+          request.auth.uid == userId
+          || isAdmin()
+        );
+
+      allow list: if isAdmin();
+
+      allow create: if signedIn()
+        && request.auth.uid == userId
+        && request.resource.data.uid == userId
+        && request.resource.data.role in ["customer", "seller"]
+        && request.resource.data.name is string
+        && request.resource.data.email is string;
+
+      allow update: if signedIn()
+        && (
+          isAdmin()
+          ||
+          (
+            request.auth.uid == userId
+            && request.resource.data.uid == resource.data.uid
+            && request.resource.data.role == resource.data.role
+            && request.resource.data.diff(resource.data)
+              .affectedKeys()
+              .hasOnly([
+                "name",
+                "phone",
+                "businessName",
+                "location",
+                "updatedAt"
+              ])
+          )
+        );
+
+      allow delete: if isAdmin();
+    }
+
+    // =====================================
+    // MARKETPLACE PRODUCTS
+    // =====================================
+
+    match /products/{productId} {
+
+      // PUBLIC APPROVED PRODUCTS
+      // EACH SELLER CAN READ THEIR OWN PRODUCTS
+
+      allow read: if isAdmin()
+        || (
+          resource.data.status == "approved"
+          && resource.data.active == true
+        )
+        || (
+          signedIn()
+          && isSeller()
+          && resource.data.sellerId == request.auth.uid
+        );
+
+      // SELLERS SUBMIT THEIR OWN PENDING PRODUCTS
+
+      allow create: if signedIn()
+        && isSeller()
+        && request.resource.data.sellerId == request.auth.uid
+        && request.resource.data.status == "pending"
+        && request.resource.data.active == false;
+
+      // ADMIN CAN APPROVE AND UPDATE PRODUCTS
+      // SELLERS CAN ONLY HIDE OR SHOW THEIR OWN
+      // APPROVED PRODUCTS
+
+      allow update: if isAdmin()
+        || (
+          signedIn()
+          && isSeller()
+          && resource.data.sellerId == request.auth.uid
+          && resource.data.status == "approved"
+          && request.resource.data.sellerId == resource.data.sellerId
+          && request.resource.data.status == resource.data.status
+          && request.resource.data.diff(resource.data)
+            .affectedKeys()
+            .hasOnly([
+              "active",
+              "updatedAt",
+              "sellerState"
+            ])
+          && request.resource.data.active is bool
+          && request.resource.data.updatedAt == request.time
+          && (!request.resource.data.diff(resource.data).affectedKeys().hasAny(["sellerState"])
+            || request.resource.data.sellerState in [
+              "Abia", "Adamawa", "Akwa Ibom", "Anambra", "Bauchi", "Bayelsa", "Benue", "Borno",
+              "Cross River", "Delta", "Ebonyi", "Edo", "Ekiti", "Enugu", "Federal Capital Territory",
+              "Gombe", "Imo", "Jigawa", "Kaduna", "Kano", "Katsina", "Kebbi", "Kogi", "Kwara",
+              "Lagos", "Nasarawa", "Niger", "Ogun", "Ondo", "Osun", "Oyo", "Plateau", "Rivers",
+              "Sokoto", "Taraba", "Yobe", "Zamfara"
+            ])
+        );
+
+      // ONLY ADMIN CAN DELETE PRODUCTS
+
+      allow delete: if isAdmin();
+    }
+
+    // =====================================
+    // CUSTOMER ORDERS AND PAYMENTS
+    // =====================================
+
+    match /orders/{orderId} {
+
+      allow read: if isAdmin()
+        || (
+          signedIn()
+          && (
+            resource.data.buyerId == request.auth.uid
+            || resource.data.customerId == request.auth.uid
+            || resource.data.userId == request.auth.uid
+            || resource.data.sellerId == request.auth.uid
+          )
+        );
+
+      // CUSTOMER BANK TRANSFER ORDER CREATION
+
+      allow create: if signedIn()
+
+        && request.resource.data.buyerId == request.auth.uid
+
+        && request.resource.data.paymentMethod == "bank_transfer"
+
+        && request.resource.data.paymentBank == "OPay"
+
+        && request.resource.data.paymentAccountName == "Nelson Philip"
+
+        && request.resource.data.paymentAccountNumber == "9037141652"
+
+        && request.resource.data.paymentStatus == "pending"
+
+        && request.resource.data.orderStatus == "pending"
+
+        && request.resource.data.receiptSubmission == "WhatsApp"
+
+        && request.resource.data.total is number
+
+        && request.resource.data.total > 0
+
+        && request.resource.data.items is list
+
+        && request.resource.data.items.size() > 0
+
+        && request.resource.data.customerName is string
+
+        && request.resource.data.customerPhone is string
+
+        && request.resource.data.customerEmail is string
+
+        && request.resource.data.deliveryAddress is string
+
+        && request.resource.data.createdAt == request.time
+
+        && request.resource.data.keys().hasOnly([
+          "buyerId",
+          "customerName",
+          "customerPhone",
+          "customerEmail",
+          "deliveryAddress",
+          "deliveryNote",
+          "items",
+          "total",
+          "paymentMethod",
+          "paymentBank",
+          "paymentAccountName",
+          "paymentAccountNumber",
+          "paymentStatus",
+          "orderStatus",
+          "receiptSubmission",
+          "createdAt"
+        ]);
+
+      // ONLY ADMIN CAN MODIFY OR DELETE ORDERS
+
+      allow update, delete: if isAdmin();
+    }
+
+    match /featuredProfilePayments/{paymentId} {
+      allow get, list: if isAdmin()
+        || (signedIn() && resource.data.uid == request.auth.uid);
+      allow create: if signedIn()
+        && isSeller()
+        && request.resource.data.uid == request.auth.uid
+        && request.resource.data.sellerEmail == request.auth.token.email
+        && request.resource.data.amountNaira == 20000
+        && request.resource.data.currency == "NGN"
+        && request.resource.data.method == "OPay manual transfer"
+        && request.resource.data.status == "pending_review"
+        && request.resource.data.senderName is string
+        && request.resource.data.senderName.size() >= 2
+        && request.resource.data.transactionReference is string
+        && request.resource.data.transactionReference.size() >= 4
+        && request.resource.data.transferDate is string
+        && request.resource.data.receiptUrl is string
+        && request.resource.data.receiptPath.matches("featured-receipts/" + request.auth.uid + "/.*")
+        && request.resource.data.createdAt == request.time;
+      allow update: if isAdmin()
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly([
+          "status", "verifiedAt", "verifiedBy", "expiresAt",
+          "rejectionReason", "reviewedAt", "reviewedBy"
+        ])
+        && request.resource.data.status in ["verified", "rejected"];
+      allow delete: if isAdmin();
+    }
+
+    match /featuredSellerAccess/{uid} {
+      allow get: if isAdmin() || (signedIn() && request.auth.uid == uid);
+      allow list: if isAdmin();
+      allow create, update, delete: if isAdmin();
+    }
+
+    match /featuredSellerProfiles/{uid} {
+      allow get: if isAdmin()
+        || (signedIn() && request.auth.uid == uid)
+        || resource.data.status == "published";
+      allow list: if isAdmin() || resource.data.status == "published";
+      allow create: if isAdmin() || (isSeller()
+        && request.auth.uid == uid
+        && activeFeaturedAccess(uid)
+        && request.resource.data.uid == uid
+        && request.resource.data.status == "published"
+        && request.resource.data.expiresAt == get(/databases/$(database)/documents/featuredSellerAccess/$(uid)).data.expiresAt
+        && request.resource.data.businessName is string
+        && request.resource.data.businessName.size() > 0
+        && request.resource.data.name is string
+        && request.resource.data.location is string
+        && request.resource.data.profilePhoto is string);
+      allow update: if isAdmin() || (isSeller()
+        && request.auth.uid == uid
+        && activeFeaturedAccess(uid)
+        && request.resource.data.uid == resource.data.uid
+        && request.resource.data.status == "published"
+        && request.resource.data.expiresAt == get(/databases/$(database)/documents/featuredSellerAccess/$(uid)).data.expiresAt);
+      allow delete: if isAdmin();
+    }
+  }
+}
